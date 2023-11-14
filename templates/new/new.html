@@ -1,0 +1,29 @@
+<h2>Новый пользователь</h2>
+<br>
+<form action="{{ url_for('new_user') }}" method="post">
+    <div>
+        <label for="name_user">
+            Nickname:
+            <input type="text" required name="nickname" id="name_user" value="{{ user.nickname }}">
+        </label>
+        {% if errors.nickname %}
+            <div>"{{ errors.nickname }}"</div>
+        {% endif %}
+    </div>
+    <br>
+    <div>
+        <label for="email_user">
+            Email:
+            <input type="text" required name="email" id="email_user" value="{{ user.email }}">
+        </label>
+        {% if errors.email %}
+            <div>"{{ errors.email }}"</div>
+        {% endif %}
+    </div>
+    <br>
+    <div>
+        <input type="submit" value="Добавить пользователя">
+    </div>
+</form>
+
+

@@ -1,0 +1,30 @@
+{% if messages %}
+    <ul class="flashes"></ul>
+        {% for category, message in messages %}
+        <li class="{{ category }}">
+            {{ message }}
+        </li>
+        {% endfor %}
+    </ul>
+{% endif %}
+
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nickname</th>
+            <th>Email</th>
+        </tr>
+        <tbody>
+            <tr>
+                <td>{{ user.id }}</td>
+                <td>{{ user.nickname }}</td>
+                <td>{{ user.email }}</td>
+            </tr>
+        </tbody>
+    </thead>
+</table>
+<br>
+<br>
+<div><a href="{{ url_for('get_users') }}">К списку пользователей</a></div>
+

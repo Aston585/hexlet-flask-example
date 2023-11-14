@@ -1,0 +1,49 @@
+{% if messages %}
+    {% for category, message in messages %}
+        <br>
+        <div style="color: darkgreen;">{{ message }}</div>
+    {% endfor %}
+{% endif %}
+<h1>Пользователи</h1>
+<br>
+<form action="{{ url_for('logout') }}">
+    <input type="submit" value="logout">
+</form>
+<br>
+<table>
+    <thead>
+        <tr>
+            {% if not users %}
+            <th>Тут пока никого нет...</th>
+            {% endif %}
+        </tr>
+        <tbody>
+            {% if users %}
+                {% for user in users %}
+                <tr>
+                    <td>
+                        <a href="{{ url_for('get_user', id=user.id) }}">{{ user.nickname }}</a>
+                    </td>
+                    <td>
+                        <form action="{{ url_for('edit_user', id=user.id) }}">
+                            <input type="submit" value="Редактировать профиль">
+                        </form>
+                    </td>
+                    <td>
+                        <form action="{{ url_for('delete_user', id=user.id) }}" method="post" onsubmit="return confirm('Вы уверены, что хотите удалить пользователя? Это действие не может быть отменено.');">
+                            <input type="submit" value="Удалить пользователя">
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            {% endif %}
+        </tbody>
+    </thead>
+</table>
+<br>
+<form action="{{ url_for('new_user') }}">
+    <input type="submit" value="Добавить нового пользователя">
+</form>
+
+
+
