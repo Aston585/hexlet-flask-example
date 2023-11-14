@@ -4,7 +4,7 @@ version = "0.1.0"
 description = ""
 authors = ["Garkusha Valery <aston585v@gmail.com>"]
 readme = "README.md"
-packages = [{include = "flask_hexlet"}]
+
 
 [tool.poetry.dependencies]
 python = "^3.11"
@@ -19,6 +19,3 @@ faker = "^19.12.1"
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
-[scripts]
-preactivate = "source $(poetry env info --path)/bin/activate"
-postdeactivate = "deactivate"
